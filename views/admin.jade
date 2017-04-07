@@ -1,0 +1,45 @@
+extends layout
+block head
+  title Admin
+block scripts
+  script(src='/javascripts/admin.js')
+  style.
+    #status{
+      height: 20%;
+      overflow: auto;
+    }
+    #result{
+      height: 50%;
+      overflow: auto;
+    }
+
+block content
+  h1 Admin Page
+  a(href='/')
+    button(class='btn btn-primary') return
+  div.row
+    div.col-md-6
+      button#bt2(class='btn btn-primary') Test
+      p#status.
+        DB connection is not tested
+
+  div.row
+    div.col-md-6
+      input#in1(type='text',placeholder='Search Collection')
+      button#bt1(class='btn btn-primary') Collection
+      br
+      input#in3(type='text',placeholder='Search UserName')
+      button#bt3(class='btn btn-primary') UserName
+      button#bt7(class='btn btn-primary') Delete
+      br
+      input#in4(type='text',placeholder='Search AnimalId')
+      button#bt4(class='btn btn-primary') AnimalId
+      br
+      button#bt10(class='btn btn-primary') Update PetList
+      br
+      p.
+        Query Result
+      p#result
+      form(method='post',action='/admin/editUser')
+             input#username(type='text',placeholder='Search UserName', name='username')
+             button#bt100(class='btn btn-primary', type='submit') Edit User

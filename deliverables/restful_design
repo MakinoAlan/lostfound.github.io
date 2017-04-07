@@ -1,0 +1,67 @@
+url /posts/Found
+
+GET: when making a request with username and Animal ID, it will return the mathing post detail.
+
+POST: when making a post request, it will add a new post to Found collection.
+
+PUT: Now implemented, return status code 501
+
+DELETE: when making a delete request, it will delete the mathing post in Found collection.
+
+
+
+
+router.get('/posts/Found',function(req,res,next){
+  var db = req.db;
+  var c = db.get('Found');
+  var u = req.body.Username;
+  c.find({"Username":u},function(e,d){
+    res.send(d);
+  });
+});
+
+router.post('/posts/Found',function(req,res,next){
+  var db = req.db;
+  var collection = db.get('Found');
+  var n = req.body.Username;
+  var id = req.body.AnimalID;
+  var lat = req.body.Lat;
+  var lng = req.body.Long;
+  var phone = req.body.Phone;
+  var des = req.body.Des;
+  var address = req.body.Address;
+  collection.find({'AnimalID':id,'Username':n},function(e,d){
+    if(d.length==0){
+    collection.insert({
+    "Username": n,
+    "AnimalID": id,
+    "Lat": lat,
+    "Long": lng,
+    "Phone": phone,
+    "Des": des,
+    "Address": address
+    },function(e,docs){if(e){res.send(e);}else{res.send('Success');}});
+    }else{
+      res.send('post with same animal id already exists');
+    }
+  });
+
+});
+
+router.delete('/posts/found',function(req,res,next){
+  var petid = req.body.petid;
+  var colName = req.body.collection;
+  var userName = req.body.username;
+  var db = req.db;
+  var collection = db.get(colName);
+  collection.remove({'AnimalID':petid,'Username':userName},function(e,d){
+    if(e){res.send(e);}
+      else{res.send('deleted');}
+  });
+
+});
+
+router.put('/posts/found',function(req,res,next){
+res.status(501);
+res.send('None shall pass');
+});

@@ -1,0 +1,23 @@
+extends layout
+block scripts
+  script(src='/javascripts/post_post.js')
+block content
+  h2.
+    AnimalID
+  h3#AnimalID= AnimalID
+  h2.
+    Username
+  h3#Username= Username
+  div#content
+  div#comment
+  #fb-root
+      script.
+       (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+       js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=478003169051700";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+  .fb-comments(data-href='', data-numposts='5')
+  .fb-like(data-share='true', data-width='450', data-show-faces='true')

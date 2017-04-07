@@ -1,0 +1,10 @@
+extends layout
+block scripts
+  script(src='/javascripts/test.js')
+  script(src='/javascripts/location.js')
+block content
+  h1 Test
+  input#in(type='text')
+  button#bt(class='btn btn-primary') Check DB
+  button#bt1(class='btn btn-primary') Check Address
+  p#result

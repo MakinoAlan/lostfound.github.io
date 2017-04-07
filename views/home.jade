@@ -1,0 +1,80 @@
+extends layout
+block head
+  title HomePage
+block scripts
+  script(src='../javascripts/home.js')
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js')
+  script(src='http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js')
+  script(src='/javascripts/bootstrapvalidator.js')
+  link(rel='stylesheet', href='/sytlesheets/bootstrapvalidator.css')
+  link(href='http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.css', rel='stylesheet')
+  link(type='text/css', rel='stylesheet', href='../styleSheets/style.css')
+  link(type='text/css', rel='stylesheet', href='../styleSheets/test.css')
+block content
+  h1 Dog Lost & Found System
+    .row
+      .col-md-2
+        #myCarousel.carousel.slide(data-ride='carousel')
+          ol.carousel-indicators
+            li.active(data-target='#myCarousel', data-slide-to='0')
+            li(data-target='#myCarousel', data-slide-to='1')
+            li(data-target='#myCarousel', data-slide-to='2')
+          .carousel-inner
+            .item.active
+              img(src='../image/dog3.jpg',class='img-rounded', alt='First slide')
+            .item
+              img(src='../image/dog7.jpg',class='img-rounded', alt='Second slide')
+            .item
+              img(src='../image/dog8.jpg',class='img-rounded', alt='Third slide')
+              
+      .col-md-2
+        img.img-responsive(src='../image/dog2.jpg', class='img-circle')
+      .col-md-4
+        p register/ login
+        form#lastTry(method='post', action='user/profile')
+          .form-group
+            input#username.form-control(type='text', placeholder='username', name='username')
+            
+          .form-group
+            input#password.form-control(type='password', placeholder='password', name='password')
+            button#bt1.btn.btn-primary(type='submit') login
+          button#bt3.btn.btn-primary register
+      .col-md-4
+    .row
+      .col-md-2
+        img.img-responsive(src='../image/dog6.jpg', class='img-circle')
+      .col-md-2
+        #myCarousel1.carousel.slide(data-ride='carousel')
+          ol.carousel-indicators
+            li.active(data-target='#myCarousel1', data-slide-to='0')
+            li(data-target='#myCarousel1', data-slide-to='1')
+            li(data-target='#myCarousel1', data-slide-to='2')
+          .carousel-inner
+            .item.active
+              img(src='../image/dog5.jpg',class='img-rounded', alt='First slide')
+            .item
+              img(src='../image/dog9.jpg',class='img-rounded', alt='Second slide')
+            .item
+              img(src='../image/dog10.jpg',class='img-rounded', alt='Third slide')
+              
+      .col-md-4
+        p admin login
+        form(method='post', action='admin/check')
+          input#admin.form-control(type='password', placeholder='KEY', name='admin')
+          button#bt2.btn.btn-primary(type='submit') go
+      .col-md-4
+    .row
+      .col-md-4
+      .col-md-4
+        a(href='/viewposts')
+          button.btn.btn-primary view posts
+      .col-md-4
+      
+    .row
+      .col-md-3
+        h3 CPSC310 Term Project
+        h3 Developed By
+    .row
+      .col-md-3
+        h4 TeamJim
+        h5 Jack Wo/Yihang Shi/Muzhi Yang/Chen Wu

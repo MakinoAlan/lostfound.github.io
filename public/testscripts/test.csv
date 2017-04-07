@@ -1,0 +1,13 @@
+username|AnimalID|Place|Type|Dellost|Addtype|Delfound|DelanimalID
+yihang|1235|ubc|add||||
+yihang|1236|ubc|add||lost||
+yihang|1237|ubc|add||lost||
+yihang|1238|ubc|add||found||
+yihang|1239|ubc|add||found||
+yihang|1240|sfu|add||found||
+yihang|1241|sfu|add||lost||
+yihang|1236||delete|yes|||no
+yihang|1237||delete|yes|||yes
+yihang|1238||delete|||yes|no
+yihang|1239||delete|||yes|yes
+yihang|1240||delete||||yes

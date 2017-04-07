@@ -1,0 +1,33 @@
+body {
+  padding: 50px;
+  text-align:center;
+  background-image:url("../image/dog11.jpg");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+  font: 14px "Microsoft Yahei", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+input#username {
+	margin:0.15in;
+}
+input#password {
+	margin:0.15in;
+}
+input#admin {
+	margin:0.15in;
+}
+
+div p {
+	font-size:60%;
+	margin:0.2in;
+}
+
+h1 {
+	height:30px;
+	font-size:30px;
+}

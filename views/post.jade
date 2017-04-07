@@ -1,0 +1,42 @@
+extends layout
+block scripts
+  script(src='/javascripts/map.js')
+  script(src='/javascripts/posts.js')
+  script(async,defer,src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaz8xOT7LYZr6thAoqqtK9oeKe87ZhXJo&signed_in=true&callback=initMap")
+  style.
+      html,body{
+        text-align-center;
+        height: 99%;
+        margin: 0;
+        padding: 0;
+      }
+      #map1,#map2{
+        width: 50%;
+        margin:0 auto;
+        height: 60%;
+      }
+block content
+  h1#username= username
+  a(href='/')
+    button#re(class='btn btn-primary') Home
+  h2 LOST(list)
+  div#map1
+  h2 FOUND(list)
+  div#map2
+  h3.
+    Lost List(Username --- AnimalID)
+  div
+    ul#lost
+  h3.
+    Found List(Username --- AnimalID)
+  div
+    ul#found
+  div
+    input#AnimalID(type='text' placeholder='AnimalID')
+    button#search(class='btn btn-primary') Search
+  h3.
+    Owner
+  div#information1
+  h3.
+    Related Found Post
+  div#information2

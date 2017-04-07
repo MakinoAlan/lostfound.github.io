@@ -1,0 +1,23 @@
+extends layout
+block scripts
+  script(src='/javascripts/guest.js')
+  script(async,defer,src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaz8xOT7LYZr6thAoqqtK9oeKe87ZhXJo&signed_in=true&callback=initMap")
+  style.
+      html,body{
+        height: 99%;
+        margin: 0;
+        padding: 0;
+      }
+      #map1,#map2{
+        height: 60%;
+        width: 50%;
+      }
+block content
+  h1.
+    Please register to check full content.
+  a(href='/')
+    button#re(class='btn btn-primary') Home
+  h2 LOST(list)
+  div#map1
+  h2 FOUND(list)
+  div#map2

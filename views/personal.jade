@@ -1,0 +1,235 @@
+extends layout
+block head
+  title= username
+block scripts
+  script(src='/javascripts/personal.js')
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+  script(src='/javascripts/bootstrapvalidator.js')
+  link(rel='stylesheet', href='/sytlesheets/bootstrapvalidator.css')
+  style.
+    #u{display:none}
+    lable{
+    font-size:20px;
+    font-style: italic;
+    }
+    #btnUpdateUser{
+    margin-bottom:10px;
+    }
+    #user-lost-post{
+    text-align:center;
+    }
+    th{
+    text-align:center;
+    }
+    table{
+    width:360px;
+    margin:0 auto;
+    font-size:20px;
+    }
+    lable#l1{
+    font-size:30px;
+    }
+    lable#l4{
+    font-size:30px;
+    }
+    table#t1{
+    width:260px;
+    margin:0 auto;
+    font-size:20px;
+    }
+    button#btnAddPet{
+    width:68px;
+    margin:0.15in;
+    }
+    bntton#btnDelPet{
+    width:68px;
+    margin:0.15in;
+    }
+    button#b1{
+    margin:0.15in;
+    }
+
+block content
+  - var name = username;
+  - var greeting = 'Welcome, '+name;
+
+  h1= greeting
+  #u
+    p= name
+
+  .container
+        h2 your profile
+        a(href='/map',target='_blank')
+          button#b1(class='btn btn-primary') View Posts
+        div.row
+            .col-md-5
+              form#myPersonal
+                .form-group
+                  lable.control-lable(for='inputUserName') User Name:
+                  input#inputUserName.form-control(type='text', placeholder='user name',readonly="readonly")
+                .form-group
+                  lable.control-lable(for='inputUserEmail') Email:
+                  input#inputUserEmail.form-control(type='email', placeholder='email',name='email')
+                .form-group
+                  lable.control-lable(for='inputUserFullname') Full Name:
+                  input#inputUserFullname.form-control(type='text', placeholder='full name',name='fullname')
+                .form-group
+                  lable.control-lable(for='inputUserAddress') Address:
+                  input#inputUserAddress.form-control(type='text', placeholder='address')
+                .form-group
+                  lable.control-lable(for='inputUserPhone') Phone Number:
+                  input#inputUserPhone.form-control(type='text', placeholder='phone',name='phone')
+                .form-group
+                  lable.control-lable(for='inputUserPassword') Password:
+                  input#inputUserPassword.form-control(type='text', placeholder='pwd',name='password')
+                  br
+                  button#btnUpdateUser.btn.btn-primary(type='submit') update
+
+            .col-md-3
+                .form-group
+                  lable.control-lable(for='inputPetId') Animal Id:
+                  input#inputPetId.form-control(type='text', placeholder='Animal ID')
+                  br
+                  button#btnAddPet.btn.btn-primary Add
+                  bntton#btnDelPet.btn.btn-primary Delete
+                #pet-list
+                  lable#l4 AnimalID
+                     table#t1
+                        tbody
+            .col-md-4
+                lable#l1 Your posts:
+                #user-post
+                  #user-lost-post
+                    lable lost post
+                        table
+                          tbody
+                  #user-found-post
+                    lable found post
+                        table
+                          tbody
+     .btn-toolbar
+       button.btn.btn-info.btn-lg(type='button', data-toggle='modal',data-target='#LostModal') Lost My pet
+       button.btn.btn-warning.btn-lg(type='button', data-toggle='modal',data-target='#FoundModal') Found a pet
+
+      #LostModal(class='modal fade', role='dialog')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+              h4.modal-title Lost my pet
+            .modal-body
+              form
+                .form-group
+                  lable.control-lable(for='l-post-animalid') Animal Id:
+                  select#l-post-animalid.form-control(name='animalIdSelector' required)
+                .form-group
+                  lable.control-lable(for='l-post-animalname') Animal Name:
+                  input#l-post-animalname.form-control(type='text',placeholder='Enter animal name', required)
+                .form-group
+                  lable.control-lable(for='l-post-lostlocation') Where Did You Lost Your Pet:
+                  input#l-post-lostlocation.form-control(type='text',placeholder='Where did you lost your pet')
+                .form-group
+                  lable.control-lable(for='l-post-contactname') Contact Name:
+                  input#l-post-contactname.form-control(type='text',placeholder='Enter contace name')
+                .form-group
+                  lable.control-lable(for='l-post-contactphonenum') Contact Phone Number:
+                  input#l-post-contactphone.form-control(type='text',placeholder='Enter contace phone')
+                .form-group
+                  lable.control-lable(for='l-post-message') Message:
+                  textarea#l-post-message.form-control(type='text', placeholder='Enter message')
+            .modal-footer
+              button#lostpostbtn.btn.btn-primary(type='button' data-dismiss='modal') Post
+
+      #FoundModal(class='modal fade', role='dialog')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+              h4.modal-title Found a pet
+            .modal-body
+              form
+                .form-group
+                  lable.control-lable(for='f-post-animalid') Animal Id:                  
+                  input#f-post-animalid.form-control(type='text', placeholder='Enter animal id')
+                .form-group
+                  lable.control-lable(for='f-post-lostlocation') Where Did you found the animal:
+                  input#f-post-lostlocation.form-control(type='text',placeholder='Where did you see the animal')
+                .form-group
+                  lable.control-lable(for='f-post-contactname') Contact Name:
+                  input#f-post-contactname.form-control(type='text',placeholder='Enter contace name')
+                .form-group
+                  lable.control-lable(for='f-post-contactphonenum') Contact Phone Number:
+                  input#f-post-contactphone.form-control(type='text',placeholder='Enter contace phone')
+                .form-group
+                  lable.control-lable(for='f-post-message') Message:
+                  textarea#f-post-message.form-control(type='text', placeholder='Enter message')
+            .modal-footer
+              button#foundpostbtn.btn.btn-primary(type='button' data-dismiss='modal') Post
+      #PetInfoModal(class='modal fade', role='dialog')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+              h4.modal-title 
+            .modal-body
+               form
+                .form-group
+                  lable.control-lable(for='pet-name') Name:
+                  input#pet-name.form-control(type='text', readonly)
+                .form-group
+                  lable.control-lable(for='pet-id') Animal Id:                  
+                  input#pet-id.form-control(type='text', readonly)
+                .form-group
+                  lable.control-lable(for='pet-color') color:
+                  input#pet-color.form-control(type='text',readonly)
+                .form-group
+                  lable.control-lable(for='pet-breed') Breed:
+                  input#pet-breed.form-control(type='text',readonly)
+                .form-group
+                  lable.control-lable(for='pet-agecategory') Age Category:
+                  input#pet-agecategory.form-control(type='text',readonly)
+                .form-group
+                  lable.control-lable(for='pet-sex') Sex:
+                  input#pet-sex.form-control(type='text',readonly)
+                .form-group
+                  lable.control-lable(for='pet-shotsdate') ShotsDate:
+                  input#pet-shotsdate.form-control(type='text',readonly)
+                .form-group
+                  lable.control-lable(for='pet-status') Status:
+                  input#pet-status.form-control(type='text',readonly)
+
+            .modal-footer
+
+
+      #EditPostModal(class='modal fade', role='dialog')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal')
+                span(aria-hidden='true') &times;
+              h4.modal-title 
+            .modal-body
+               form
+                .form-group
+                  lable.control-lable(for='post-pet-id') Animal Id:                  
+                  input#post-id.form-control(type='text')
+                .form-group
+                  lable.control-lable(for='post-lost-addre') Where Did You Lost Your Pet:                  
+                  input#post-addre.form-control(type='text')
+                .form-group
+                  lable.control-lable(for='post-mess') Message:                  
+                  input#post-mess.form-control(type='text')
+
+
+
+            .modal-footer
+              button#post-updatebtn.btn.btn-primary(type='button' data-dismiss='modal') Update
+
+
+
+
+
+  
